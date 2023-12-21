@@ -8,7 +8,8 @@ local dpi = require("beautiful.xresources").apply_dpi
 
 -- {{{ Main
 local theme = {}
-theme.wallpaper = themes_path .. "custom-theme/fog.jpg"
+theme.wallpaper = themes_path .. "custom-theme/fog2.jpg"
+theme.wallpaper = themes_path .. "fog2.jpg"
 -- }}}
 
 -- {{{ Styles

@@ -20,6 +20,8 @@ require("awful.hotkeys_popup.keys")
 
 -- Carregar wallpaper automaticamente
 awful.spawn.with_shell("feh --bg-fill custom-theme/fog2.jpg")
+awful.spawn.with_shell("feh --bg-fill ../../Desktop/wg/fog2.jpg")
+
 
 
 -- Load Debian menu entries
@@ -283,7 +285,9 @@ globalkeys = gears.table.join(
     awful.key({ modkey }, "b", function () awful.spawn("brave-browser")   end,
           {description= "abrir navegador", group="meus atalhos"}),
     awful.key({ modkey }, "e", function () awful.spawn("nautilus") end,
-          { description="open file explorer", group="launcher" }),
+          { description="open file explorer", group="meus atalhos" }),
+    awful.key({ modkey }, "e", function () awful.spawn("code") end,
+          { description="abrir vscode", group="meus atalhos" }),      
 
 
     -- Layout manipulation
