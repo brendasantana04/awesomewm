@@ -8,3 +8,5 @@ Minha configuração do awesomewm, me baseando na documentação oficial deles.
 - [Configurações iniciais](https://awesomewm.org/doc/api/documentation/07-my-first-awesome.md.html#)
 
 - [Widgets, variáveis, Key bindings](https://awesomewm.org/doc/api/documentation/07-my-first-awesome.md.html#)
+
+- [Aparência](https://awesomewm.org/doc/api/documentation/06-appearance.md.html)
