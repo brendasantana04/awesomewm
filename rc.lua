@@ -18,6 +18,10 @@ local hotkeys_popup = require("awful.hotkeys_popup")
 -- when client with a matching name is opened:
 require("awful.hotkeys_popup.keys")
 
+-- Carregar wallpaper automaticamente
+awful.spawn.with_shell("feh --bg-fill custom-theme/fog2.jpg")
+
+
 -- Load Debian menu entries
 local debian = require("debian.menu")
 local has_fdo, freedesktop = pcall(require, "freedesktop")
@@ -49,7 +53,7 @@ end
 
 -- {{{ Variable definitions
 -- Themes define colours, icons, font and wallpapers.
-beautiful.init("/home/haine/.config/awesome/theme.lua")
+beautiful.init("/home/haine/.config/awesome/custom-theme/theme.lua")
 
 -- This is used later as the default terminal and editor to run.
 terminal = "alacritty"
@@ -65,10 +69,10 @@ modkey = "Mod4"
 
 -- Table of layouts to cover with awful.layout.inc, order matters.
 awful.layout.layouts = {
-    awful.layout.suit.floating,
-    awful.layout.suit.tile,
     awful.layout.suit.tile.left,
+    awful.layout.suit.tile,
     awful.layout.suit.tile.bottom,
+    awful.layout.suit.floating,
     --awful.layout.suit.tile.top,
     --awful.layout.suit.fair,
     --awful.layout.suit.fair.horizontal,
@@ -112,6 +116,9 @@ else
     })
 end
 
+
+praisewidget = wibox.widget.textbox()
+praisewidget.text = "You are great!"
 
 mylauncher = awful.widget.launcher({ image = beautiful.awesome_icon,
                                      menu = mymainmenu })
@@ -222,6 +229,7 @@ awful.screen.connect_for_each_screen(function(s)
         { -- Left widgets
             layout = wibox.layout.fixed.horizontal,
             mylauncher,
+	    --praisewidget, -- This line is new
             s.mytaglist,
             s.mypromptbox,
         },
@@ -270,6 +278,13 @@ globalkeys = gears.table.join(
     ),
     awful.key({ modkey,           }, "w", function () mymainmenu:show() end,
               {description = "show main menu", group = "awesome"}),
+
+    -- Meus Atalhos
+    awful.key({ modkey }, "b", function () awful.spawn("brave-browser")   end,
+          {description= "abrir navegador", group="meus atalhos"}),
+    awful.key({ modkey }, "e", function () awful.spawn("nautilus") end,
+          { description="open file explorer", group="launcher" }),
+
 
     -- Layout manipulation
     awful.key({ modkey, "Shift"   }, "j", function () awful.client.swap.byidx(  1)    end,
@@ -508,7 +523,7 @@ awful.rules.rules = {
 
     -- Add titlebars to normal clients and dialogs
     { rule_any = {type = { "normal", "dialog" }
-      }, properties = { titlebars_enabled = true }
+      }, properties = { titlebars_enabled = false } --a title bar foi removida
     },
 
     -- Set Firefox to always map on the tag named "2" on screen 1.
